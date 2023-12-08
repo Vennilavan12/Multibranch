@@ -7,8 +7,7 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                 
-                 docker build -t vennilavan/dev .
+                 docker build -t nginx .
             }
         }
 
