@@ -2,17 +2,18 @@ pipeline {
     agent any
 
     stages {
-         stage('Build') {
+        stage('Build') {
             steps {
                 script {
-                    docker build -t nginx .
-                }    
+                    docker.build('nginx')
+                }
             }
         }
 
         stage('Test') {
             steps {
                 echo "Testing"
+                // Add your testing steps here
             }
         }
 
@@ -21,9 +22,10 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                 echo "Deploy to dev branch"
-                 sh 'chmod +x script.sh'
-                 sh './script.sh' 
+                echo "Deploying to dev branch"
+                sh 'chmod +x script.sh'
+                sh './script.sh'
+                // Additional deployment steps for dev
             }
         }
 
@@ -32,7 +34,8 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo "Deploy to Prod branch"
+                echo "Deploying to Prod branch"
+                // Additional deployment steps for prod
             }
         }
     }
