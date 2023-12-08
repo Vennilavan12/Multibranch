@@ -2,21 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build Dev Image') {
-            when {
-                branch 'dev'
-            }
+         stage('Build') {
             steps {
-                 docker build -t nginx .
-            }
-        }
-
-        stage('Deploy to Prod') {
-            when {
-                branch 'master'
-            }
-            steps {
-                 docker build -t vennilavan/prod .
+                docker build -t nginx .
             }
         }
 
