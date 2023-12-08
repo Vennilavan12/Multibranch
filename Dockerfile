@@ -1,5 +1,5 @@
 # Use the official Nginx base image
-FROM nginx:latest
+FROM nginx:alpine
 
 # Copy the local index.html to the container's default Nginx HTML directory
 COPY index.html /usr/share/nginx/html
