@@ -13,7 +13,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing"
-                // Add your testing steps here
             }
         }
 
@@ -25,7 +24,6 @@ pipeline {
                 echo "Deploying to dev branch"
                 sh 'chmod +x script.sh'
                 sh './script.sh'
-                // Additional deployment steps for dev
             }
         }
 
@@ -35,7 +33,8 @@ pipeline {
             }
             steps {
                 echo "Deploying to Prod branch"
-                // Additional deployment steps for prod
+                sh 'chmod +x script.sh'
+                sh './script.sh'
             }
         }
     }
