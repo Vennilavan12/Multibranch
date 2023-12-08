@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Your build steps here
+               echo "Building"
             }
         }
 
         stage('Test') {
             steps {
-                // Your test steps here
+                echo "Testing"
             }
         }
 
@@ -19,7 +19,7 @@ pipeline {
                 branch 'dev'
             }
             steps {
-                // Deployment to dev environment
+                 echo "Deploy to dev branch"
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                // Deployment to prod environment
+                echo "Deploy to Prod branch"
             }
         }
     }
