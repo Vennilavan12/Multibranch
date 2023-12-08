@@ -2,11 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Dev Image') {
+            when {
+                branch 'dev'
+            }
             steps {
-               echo "Building"
-               sh 'chmod +x script.sh'
-               sh './script.sh' 
+                 
+                 docker build -t vennilavan/dev .
+            }
+        }
+
+        stage('Deploy to Prod') {
+            when {
+                branch 'master'
+            }
+            steps {
+                 docker build -t vennilavan/prod .
             }
         }
 
@@ -22,6 +33,8 @@ pipeline {
             }
             steps {
                  echo "Deploy to dev branch"
+                 sh 'chmod +x script.sh'
+                 sh './script.sh' 
             }
         }
 
