@@ -18,9 +18,6 @@ pipeline {
         }
 
         stage('Deploy to Dev') {
-            agent {
-                label 'agent'
-            }
             when {
                 branch 'dev'
             }
@@ -33,14 +30,23 @@ pipeline {
         }
 
         stage('Deploy to Prod') {
-            agent {
-                label 'agent'
-            }
             when {
                 branch 'master'
             }
             steps {
                 echo "Deploying to Prod branch"
+                // Additional deployment steps for prod
+            }
+        }
+         stage('Deploy to slave') {
+            agent {
+                label 'agent'
+            }
+            steps {
+                script {
+                    docker pull vennilavan/dev
+                    docker run -d -p 80:80 vennilavan/dev
+                    echo "Deploying to Slave"
                 // Additional deployment steps for prod
             }
         }
