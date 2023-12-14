@@ -38,18 +38,5 @@ pipeline {
                 // Additional deployment steps for prod
             }
         }
-
-        stage('Deploy to Slave') {
-            agent {
-                label 'agent'
-            }
-            steps {
-                script {
-                    
-                    echo "Deploying to Slave"
-                    // Additional deployment steps for slave
-                }
-            }
-        }
     }
 }
