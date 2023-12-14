@@ -44,8 +44,8 @@ pipeline {
             }
             steps {
                 script {
-                    docker pull vennilavan/dev
-                    docker run -d -p 80:80 vennilavan/dev
+                    docker pull vennilavan/dev:latest
+                    docker run -d -p 80:80 vennilavan/dev:latest
                     echo "Deploying to Slave"
                 // Additional deployment steps for prod
             }
