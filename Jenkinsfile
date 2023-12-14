@@ -48,6 +48,7 @@ pipeline {
                     docker run '-d -p 80:80 vennilavan/dev:latest'
                     echo "Deploying to Slave"
                 // Additional deployment steps for prod
+                }
             }
         }
     }
