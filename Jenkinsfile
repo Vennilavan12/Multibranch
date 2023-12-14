@@ -18,6 +18,9 @@ pipeline {
         }
 
         stage('Deploy to Dev') {
+            agent {
+                label 'agent'
+            }
             when {
                 branch 'dev'
             }
@@ -30,6 +33,9 @@ pipeline {
         }
 
         stage('Deploy to Prod') {
+            agent {
+                label 'agent'
+            }
             when {
                 branch 'master'
             }
