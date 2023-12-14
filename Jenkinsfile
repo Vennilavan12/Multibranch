@@ -38,16 +38,17 @@ pipeline {
                 // Additional deployment steps for prod
             }
         }
-         stage('Deploy to slave') {
+
+        stage('Deploy to Slave') {
             agent {
                 label 'agent'
             }
             steps {
                 script {
-                    docker pull 'vennilavan/dev:latest'
-                    docker run '-d -p 80:80 vennilavan/dev:latest'
+                    docker.image('vennilavan/dev:latest').pull()
+                    docker.image('vennilavan/dev:latest').run("-d -p 80:80 --name my_container vennilavan/dev:latest")
                     echo "Deploying to Slave"
-                // Additional deployment steps for prod
+                    // Additional deployment steps for slave
                 }
             }
         }
